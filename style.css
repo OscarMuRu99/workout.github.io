@@ -1,0 +1,82 @@
+/* Estilo base */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #89fffd, #8ec5fc);
+    color: #333;
+  }
+  
+  /* Contenedor principal */
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Encabezado */
+  header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  header h1 {
+    font-size: 24px;
+    color: #fff;
+  }
+  
+  /* Secciones */
+  main section {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  section h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  
+  /* Tabla de participantes */
+  #participants {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .participant {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f4f4f4;
+    padding: 10px 15px;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .participant img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+  }
+  
+  .participant .name {
+    flex: 1;
+  }
+  
+  .participant .days {
+    font-weight: bold;
+    color: #007bff;
+  }
+  
+  /* Líder actual */
+  #current-leader p {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ff5722;
+  }
+  
