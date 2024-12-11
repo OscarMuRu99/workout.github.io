@@ -14,21 +14,23 @@
     </header>
 
     <main>
+      <!-- Ganador actual -->
+      <section id="current-leader">
+        <h2>🏆 Líder Actual</h2>
+        <div id="leader-info">
+          <img id="leader-photo" src="" alt="Foto del líder" style="display: none;">
+          <p id="leader">¡Nadie ha registrado días aún!</p>
+        </div>
+      </section>
       <!-- Tabla de participantes -->
       <section id="leaderboard">
         <h2>Clasificación</h2>
         <div id="participants"></div>
       </section>
-
-      <!-- Ganador actual -->
-      <section id="current-leader">
-        <h2>🏆 Líder Actual</h2>
-        <p id="leader">¡Nadie ha registrado días aún!</p>
-      </section>
     </main>
   </div>
 
-  <!-- Modal para ver imágenes ampliadas -->
+  <!-- Modal for enlarged image -->
   <div id="imageModal" class="modal">
     <span class="close">&times;</span>
     <img class="modal-content" id="modalImage">
