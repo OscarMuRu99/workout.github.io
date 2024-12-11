@@ -1,0 +1,18 @@
+❌ Failed to send email to Oscar (oscarmuru@outlook.com): Error: Missing credentials for "PLAIN"
+❌ Failed to send email to Arturo (arturo@example.com): Error: Missing credentials for "PLAIN"
+❌ Failed to send email to Alfonso (alfonso@example.com): Error: Missing credentials for "PLAIN"
+❌ Failed to send email to Vala (vala@example.com): Error: Missing credentials for "PLAIN"
+❌ Failed to send email to Meño (meno@example.com): Error: Missing credentials for "PLAIN"
+❌ Failed to send email to Romo (romo@example.com): Error: Missing credentials for "PLAIN"
+❌ Failed to send email to Oscar (oscarmuru@outlook.com): Error: Missing credentials for "PLAIN"
+❌ Failed to send email to Arturo (arturo@example.com): Error: Missing credentials for "PLAIN"
+❌ Failed to send email to Alfonso (alfonso@example.com): Error: Missing credentials for "PLAIN"
+❌ Failed to send email to Vala (vala@example.com): Error: Missing credentials for "PLAIN"
+❌ Failed to send email to Meño (meno@example.com): Error: Missing credentials for "PLAIN"
+❌ Failed to send email to Romo (romo@example.com): Error: Missing credentials for "PLAIN"
+✅ Email sent to Oscar (oscarmuru@outlook.com) - Message ID: <76eb077c-ebd2-8560-9cba-abaac09c4159@gmail.com>
+✅ Email sent to Arturo (arturo@example.com) - Message ID: <b8406c18-e875-6c72-faaa-106b59abb088@gmail.com>
+✅ Email sent to Alfonso (alfonso@example.com) - Message ID: <53912dbe-6bce-50c1-63af-957bab4ed67c@gmail.com>
+✅ Email sent to Vala (vala@example.com) - Message ID: <aa64195a-3841-d083-bb75-b78fe0e780aa@gmail.com>
+✅ Email sent to Meño (meno@example.com) - Message ID: <d994a12a-1e13-8f73-3007-d799c3710e59@gmail.com>
+✅ Email sent to Romo (romo@example.com) - Message ID: <a0bdf05c-7de0-7476-f575-ffb3dc64d4d6@gmail.com>
