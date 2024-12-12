@@ -1,30 +1,57 @@
-require('dotenv').config();
-const express = require('express');
-const nodemailer = require('nodemailer');
-const cron = require('node-cron');
-const fs = require('fs');
+const axios = require('axios');
+const cheerio = require('cheerio');
 
-// Sample participant data
-const participants = [
-  { name: "Oscar", email: "oscarmuru@outlook.com", days: 6 },
-  { name: "Arturo", email: "arturo@example.com", days: 6 },
-  { name: "Alfonso", email: "alfonso@example.com", days: 6 },
-  { name: "Vala", email: "vala@example.com", days: 2 },
-  { name: "Meño", email: "meno@example.com", days: 2 },
-  { name: "Romo", email: "romo@example.com", days: 7 },
-];
+async function fetchRealData() {
+  try {
+    // Replace this URL with the actual URL of your webpage
+    const response = await axios.get('https://oscarmuru99.github.io/workout.github.io/');
+    const html = response.data;
+    const $ = cheerio.load(html);
 
-// Configure the email transporter
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: 'oscarjojo99@gmail.com', // Use environment variables
-    pass: 'cvoi nhsu yjxo ydhd', // Use environment variables
-  },
-});
+    const participants = [];
+    $('#participants .participant').each((index, element) => {
+      const name = $(element).find('.name').text().trim();
+      const days = parseInt($(element).find('.days').text().trim(), 10);
+      const email = $(element).find('.email').text().trim(); // Add emails if available in the HTML
 
-// Function to generate the email content
-function generateEmailContent() {
+      participants.push({ name, days, email });
+    });
+
+    return participants;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return [];
+  }
+}
+
+// Update the sendWeeklyEmails function to use real data
+async function sendWeeklyEmails() {
+  const participants = await fetchRealData();
+  if (participants.length === 0) {
+    console.log('❌ No participants found!');
+    return;
+  }
+
+  const emailContent = generateEmailContent(participants);
+
+  for (const participant of participants) {
+    try {
+      const info = await transporter.sendMail({
+        from: '"Reto de Ejercicio" <your_email@gmail.com>',
+        to: participant.email,
+        subject: '🏆 Clasificación Semanal 🏋️‍♂️',
+        html: emailContent,
+      });
+
+      console.log(`✅ Email sent to ${participant.name} (${participant.email})`);
+    } catch (error) {
+      console.error(`❌ Failed to send email to ${participant.name} (${participant.email}):`, error);
+    }
+  }
+}
+
+// Generate email content based on real data
+function generateEmailContent(participants) {
   let tableRows = participants
     .map(
       (p, index) => `<tr><td>${index + 1}</td><td>${p.name}</td><td>${p.days}</td></tr>`
@@ -48,41 +75,14 @@ function generateEmailContent() {
   `;
 }
 
-// Function to send emails
-async function sendWeeklyEmails() {
-  const emailContent = generateEmailContent();
-  let logEntries = [];
-
-  for (const participant of participants) {
-    try {
-      const info = await transporter.sendMail({
-        from: '"Reto de Ejercicio" <your_email@gmail.com>',
-        to: participant.email,
-        subject: '🏆 Clasificación Semanal 🏋️‍♂️',
-        html: emailContent,
-      });
-
-      const logEntry = `✅ Email sent to ${participant.name} (${participant.email}) - Message ID: ${info.messageId}`;
-      logEntries.push(logEntry);
-      console.log(logEntry);
-    } catch (error) {
-      const logEntry = `❌ Failed to send email to ${participant.name} (${participant.email}): ${error}`;
-      logEntries.push(logEntry);
-      console.error(logEntry);
-    }
-  }
-
-  // Save logs to a file
-  fs.appendFileSync('email-log.txt', logEntries.join('\n') + '\n');
-}
-
 // Schedule the email job to run every Monday at 8:00 AM
 cron.schedule('*/1 * * * *', () => {
-  console.log('Sending weekly emails...');
+    console.log('Sending weekly emails...');
+    sendWeeklyEmails();
+  });
+  
+// Call this function in your cron job
+/*cron.schedule('0 8 * * 1', () => {
+  console.log('Sending weekly emails with real data...');
   sendWeeklyEmails();
-});
-
-// Start the server (optional for frontend integration)
-const app = express();
-app.get('/', (req, res) => res.send('Email Scheduler is Running'));
-app.listen(3000, () => console.log('Server running on http://localhost:3000'));
+});*/
