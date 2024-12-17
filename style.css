@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #89fffd, #8ec5fc);
+    background: linear-gradient(135deg, #8A2387, #E94057, #F27121);
     color: #333;
   }
   
@@ -82,7 +82,7 @@ body {
 
   header #countdown {
     font-size: 18px;
-    color: black;
+    color: whitesmoke;
     font-weight: bold;
     margin-top: 10px;
 }
