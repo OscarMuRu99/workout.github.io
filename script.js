@@ -1,10 +1,10 @@
 // Lista de participantes simulada
 const participants = [
-  { name: "Oscar", days: 8, image: "images/oscar.png" },
+  { name: "Oscar", days: 9, image: "images/oscar.png" },
   { name: "Arturo", days: 7, image: "images/arturo.png" },
   { name: "Alfonso", days: 8, image: "images/alfonso.png" },
   { name: "Vala", days: 4, image: "images/vala.png" },
-  { name: "Meño", days: 6, image: "images/meno.png" },
+  { name: "Meño", days: 7, image: "images/meno.png" },
   { name: "Romo", days: 7, image: "images/romo.png" },
 ];
 
